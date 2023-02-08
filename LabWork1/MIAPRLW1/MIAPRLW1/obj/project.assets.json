@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\1\\try\\MIAPRLW1\\MIAPRLW1\\MIAPRLW1.csproj",
+      "projectUniqueName": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\MIAPR\\LabWork1\\MIAPRLW1\\MIAPRLW1\\MIAPRLW1.csproj",
       "projectName": "MIAPRLW1",
-      "projectPath": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\1\\try\\MIAPRLW1\\MIAPRLW1\\MIAPRLW1.csproj",
+      "projectPath": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\MIAPR\\LabWork1\\MIAPRLW1\\MIAPRLW1\\MIAPRLW1.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\1\\try\\MIAPRLW1\\MIAPRLW1\\obj\\",
+      "outputPath": "E:\\IT&BSUIR\\BSUIR\\3 COURSE\\6 SEM\\MiAPR\\LW\\MIAPR\\LabWork1\\MIAPRLW1\\MIAPRLW1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -40,17 +40,18 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(500, 500);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(500, 350);
+            this.pictureBox1.Size = new System.Drawing.Size(500, 500);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // bKSR
             // 
-            this.bKSR.Location = new System.Drawing.Point(165, 499);
+            this.bKSR.Location = new System.Drawing.Point(129, 544);
             this.bKSR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bKSR.Name = "bKSR";
-            this.bKSR.Size = new System.Drawing.Size(112, 53);
+            this.bKSR.Size = new System.Drawing.Size(164, 53);
             this.bKSR.TabIndex = 1;
             this.bKSR.Text = "K-средних";
             this.bKSR.UseVisualStyleBackColor = true;
@@ -58,20 +59,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(165, 559);
+            this.button1.Location = new System.Drawing.Point(129, 620);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 42);
+            this.button1.Size = new System.Drawing.Size(164, 62);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Найти решение";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(551, 13);
-            this.pictureBox2.MaximumSize = new System.Drawing.Size(500, 350);
+            this.pictureBox2.MaximumSize = new System.Drawing.Size(500, 500);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(500, 350);
+            this.pictureBox2.Size = new System.Drawing.Size(500, 500);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
@@ -79,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 600);
+            this.ClientSize = new System.Drawing.Size(1065, 710);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bKSR);

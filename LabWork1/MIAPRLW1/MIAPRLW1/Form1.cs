@@ -27,12 +27,12 @@ namespace MIAPRLW1
             }
         }
 
-        public MyPoints[] points = new MyPoints[1000];
+        public MyPoints[] points = new MyPoints[10000];
 
-        public int[] classes = new int[3];
-        public int[] elementsClassCount = new int[3];
+        public int[] classes = new int[5];
+        public int[] elementsClassCount = new int[5];
 
-        public Point[] centerClasses = new Point[3];
+        public Point[] centerClasses = new Point[5];
         public Random rnd = new Random();
 
         public bool stopFlag = false;
@@ -44,8 +44,8 @@ namespace MIAPRLW1
             for (int i = 0; i < points.Length; i++)
             {
                 points[i] = new MyPoints();
-                points[i].X = rnd.Next(0, 300);
-                points[i].Y = rnd.Next(0, 300);
+                points[i].X = rnd.Next(0, 500);
+                points[i].Y = rnd.Next(0, 500);
                 points[i].PointClass = 0;
             }
         }
@@ -80,6 +80,12 @@ namespace MIAPRLW1
                         break;
                     case 3:
                         elementsClassCount[2]++;
+                        break;
+                    case 4:
+                        elementsClassCount[3]++;
+                        break;
+                    case 5:
+                        elementsClassCount[4]++;
                         break;
                     default:                       
                         break;
@@ -156,6 +162,13 @@ namespace MIAPRLW1
                     case 3:
                         graphics.FillRectangle(Brushes.Green, points[i].X, points[i].Y, 5, 5);
                         break;
+                    case 4:
+                        graphics.FillRectangle(Brushes.Orange, points[i].X, points[i].Y, 5, 5);
+                        break;
+                    case 5:
+                        graphics.FillRectangle(Brushes.Turquoise, points[i].X, points[i].Y, 5, 5);
+                        break;
+
                     default:
                         graphics.FillRectangle(Brushes.Black, points[i].X, points[i].Y, 5, 5);
                         break;
