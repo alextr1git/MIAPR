@@ -15,5 +15,6 @@
          </font>
       </Label>
       <Canvas fx:id="myCanvas" height="300.0" layoutX="37.0" layoutY="81.0" width="500.0" />
+      <Button fx:id="kAverageButton" layoutX="588.0" layoutY="218.0" mnemonicParsing="false" onAction="#kAHandler" text="K-Average" />
    </children>
 </Pane>

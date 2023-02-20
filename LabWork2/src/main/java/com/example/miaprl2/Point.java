@@ -5,6 +5,12 @@ public class Point {
     double Y;
     int pointClass;
     boolean isKernell;
+    public Point(){
+        this.X = 0;
+        this.Y = 0;
+        this.pointClass = 0;
+        this.isKernell = false;
+    }
     public Point(double x, double y, int pc) {
         this.X = x;
         this.Y = y;

@@ -10,12 +10,15 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static java.lang.Math.floor;
+
 public class HelloController {
     private static final double dotSize = 5;
     private static final int objectsAmount = 20000;
     private static final int high = 300;
     private static final int width = 500;
     private int existedClassesCount = 0;
+    private Point[] kaKernells;
 
     private Point points[];
    private int Kernells[] = new int[100];
@@ -39,6 +42,11 @@ public class HelloController {
         tieObjectsToClasses();
         doCalculations();
         drawAllObjects();
+    }
+
+    @FXML
+    private void kAHandler(){
+        kAverageMethod();
     }
 private void doCalculations(){
         while(FindOthersKernell() == 1){
@@ -91,15 +99,61 @@ private void doCalculations(){
         }
 
     }
+    private void KAdrawAllObjects(){
+        for (int i = 0; i < points.length; i++){
+            switch (points[i].pointClass){
+                case 0:
+                    gc.setFill(Color.PINK);
+                case 1:
+                    gc.setFill(Color.BLUE);
+                    break;
+                case 2:
+                    gc.setFill(Color.GREEN);
+                    break;
+                case 3:
+                    gc.setFill(Color.YELLOW);
+                    break;
+                case 4:
+                    gc.setFill(Color.PURPLE);
+                    break;
+                case 5:
+                    gc.setFill(Color.GOLD);
+                    break;
+                case 6:
+                    gc.setFill(Color.CHOCOLATE);
+                    break;
+                case 7:
+                    gc.setFill(Color.LIGHTBLUE);
+                    break;
+                case 8:
+                    gc.setFill(Color.BLACK);
+                    break;
+                case 9:
+                    gc.setFill(Color.DEEPSKYBLUE);
+                    break;
+                case 10:
+                    gc.setFill(Color.SANDYBROWN);
+                    break;
+                default:
+                    gc.setFill(Color.GRAY);
+                    break;
+            }
+            gc.fillRect(points[i].X, points[i].Y, dotSize, dotSize);
+        }
+        for (int j = 0; j < existedClassesCount; j++){
+            gc.setFill(Color.RED);
+            gc.fillRect(kaKernells[j].X, kaKernells[j].Y, dotSize + 3, dotSize + 3);
+        }
+
+    }
 
     private void initializeObjects(){
         Random rand = new Random();
         points = new Point[objectsAmount];
 
         for (int i = 0; i < points.length; i++) {
-            double x = rand.nextDouble(width - 5); // Random number between 10 and 100 (inclusive)
-            double y = rand.nextDouble(high - 5); // Random number between 10 and 100 (inclusive)
-         //   int pc = rand.nextInt(3);
+            double x = rand.nextDouble(width - 20); // Random number between 10 and 100 (inclusive)
+            double y = rand.nextDouble(high - 20); // Random number between 10 and 100 (inclusive)
             points[i] = new Point(x, y);
         }
         int firstKernell = rand.nextInt(objectsAmount + 1);
@@ -198,5 +252,187 @@ if(existedClassesCount == 50){
             }
         }
 
+    }
+    private void tienewObjectsToClasses(){
+        for(int i = 0; i < points.length; i++){
+            double minDistanceToKernell = 10000;
+            for (int j = 1; j <= existedClassesCount; j++){
+                double newDist = calculateDistance(points[i].X, points[i].Y,kaKernells[j].X,kaKernells[j].Y);
+                if (newDist <= minDistanceToKernell){
+                    minDistanceToKernell = newDist;
+                    points[i].pointClass = j;
+                }
+
+            }
+        }
+
+    }
+
+    private void kAverageMethod(){
+        gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
+        newKernellsKA();
+        tienewObjectsToClasses();
+        while (reOrderKernells()) {
+            System.out.println("ITERATION");
+            tienewObjectsToClasses();
+        }
+        KAdrawAllObjects();
+    }
+    private void newKernellsKA(){
+        int large = existedClassesCount + 1;
+        kaKernells = new Point[large];
+        int[] amountsOfObjectsInClasses = new int[large];
+        int[] XSumOfObjectsInClasses = new int[large];
+        int[] YSumOfObjectsInClasses = new int[large];
+        for (int i = 0; i <points.length; i++){
+            switch(points[i].pointClass)
+            {
+                case 1:
+                    amountsOfObjectsInClasses[1]++;
+                    XSumOfObjectsInClasses[1] += points[i].X;
+                    YSumOfObjectsInClasses[1] += points[i].Y;
+                    break;
+                case 2:
+                    amountsOfObjectsInClasses[2]++;
+                    XSumOfObjectsInClasses[2] += points[i].X;
+                    YSumOfObjectsInClasses[2] += points[i].Y;
+                    break;
+                case 3:
+                    amountsOfObjectsInClasses[3]++;
+                    XSumOfObjectsInClasses[3] += points[i].X;
+                    YSumOfObjectsInClasses[3] += points[i].Y;
+                    break;
+                case 4:
+                    amountsOfObjectsInClasses[4]++;
+                    XSumOfObjectsInClasses[4] += points[i].X;
+                    YSumOfObjectsInClasses[4] += points[i].Y;
+                    break;
+                case 5:
+                    amountsOfObjectsInClasses[5]++;
+                    XSumOfObjectsInClasses[5] += points[i].X;
+                    YSumOfObjectsInClasses[5] += points[i].Y;
+                    break;
+                case 6:
+                    amountsOfObjectsInClasses[6]++;
+                    XSumOfObjectsInClasses[6] += points[i].X;
+                    YSumOfObjectsInClasses[6] += points[i].Y;
+                    break;
+                case 7:
+                    amountsOfObjectsInClasses[7]++;
+                    XSumOfObjectsInClasses[7] += points[i].X;
+                    YSumOfObjectsInClasses[7] += points[i].Y;
+                    break;
+                case 8:
+                    amountsOfObjectsInClasses[8]++;
+                    XSumOfObjectsInClasses[8] += points[i].X;
+                    YSumOfObjectsInClasses[8] += points[i].Y;
+                    break;
+                case 9:
+                    amountsOfObjectsInClasses[9]++;
+                    XSumOfObjectsInClasses[9] += points[i].X;
+                    YSumOfObjectsInClasses[9] += points[i].Y;
+                    break;
+                case 10:
+                    amountsOfObjectsInClasses[10]++;
+                    XSumOfObjectsInClasses[10] += points[i].X;
+                    YSumOfObjectsInClasses[10] += points[i].Y;
+                    break;
+                default:
+                    System.out.println("DEF");
+                    break;
+
+
+            }
+        }
+        System.out.println(existedClassesCount);
+        for (int j = 1; j <= existedClassesCount; j++){
+
+            kaKernells[j] = new Point(XSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j], YSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
+           kaKernells[j].isKernell = true;
+        }
+    }
+    private boolean reOrderKernells(){
+        int large = existedClassesCount + 1;
+        int[] amountsOfObjectsInClasses = new int[large];
+        int[] XSumOfObjectsInClasses = new int[large];
+        int[] YSumOfObjectsInClasses = new int[large];
+        for (int i = 0; i <points.length; i++){
+            switch(points[i].pointClass)
+            {
+                case 1:
+                    amountsOfObjectsInClasses[1]++;
+                    XSumOfObjectsInClasses[1] += points[i].X;
+                    YSumOfObjectsInClasses[1] += points[i].Y;
+                    break;
+                case 2:
+                    amountsOfObjectsInClasses[2]++;
+                    XSumOfObjectsInClasses[2] += points[i].X;
+                    YSumOfObjectsInClasses[2] += points[i].Y;
+                    break;
+                case 3:
+                    amountsOfObjectsInClasses[3]++;
+                    XSumOfObjectsInClasses[3] += points[i].X;
+                    YSumOfObjectsInClasses[3] += points[i].Y;
+                    break;
+                case 4:
+                    amountsOfObjectsInClasses[4]++;
+                    XSumOfObjectsInClasses[4] += points[i].X;
+                    YSumOfObjectsInClasses[4] += points[i].Y;
+                    break;
+                case 5:
+                    amountsOfObjectsInClasses[5]++;
+                    XSumOfObjectsInClasses[5] += points[i].X;
+                    YSumOfObjectsInClasses[5] += points[i].Y;
+                    break;
+                case 6:
+                    amountsOfObjectsInClasses[6]++;
+                    XSumOfObjectsInClasses[6] += points[i].X;
+                    YSumOfObjectsInClasses[6] += points[i].Y;
+                    break;
+                case 7:
+                    amountsOfObjectsInClasses[7]++;
+                    XSumOfObjectsInClasses[7] += points[i].X;
+                    YSumOfObjectsInClasses[7] += points[i].Y;
+                    break;
+                case 8:
+                    amountsOfObjectsInClasses[8]++;
+                    XSumOfObjectsInClasses[8] += points[i].X;
+                    YSumOfObjectsInClasses[8] += points[i].Y;
+                    break;
+                case 9:
+                    amountsOfObjectsInClasses[9]++;
+                    XSumOfObjectsInClasses[9] += points[i].X;
+                    YSumOfObjectsInClasses[9] += points[i].Y;
+                    break;
+                case 10:
+                    amountsOfObjectsInClasses[10]++;
+                    XSumOfObjectsInClasses[10] += points[i].X;
+                    YSumOfObjectsInClasses[10] += points[i].Y;
+                    break;
+                default:
+
+                    break;
+
+            }
+
+        }
+
+        int oldCheckSum = 0;
+        int newCheckSum = 0;
+        for (int j = 1; j <= existedClassesCount; j++){
+            oldCheckSum += (kaKernells[j].X +kaKernells[j].Y);
+            System.out.println(j);
+            System.out.println(amountsOfObjectsInClasses[j]);
+            System.out.println(XSumOfObjectsInClasses[j]);
+            kaKernells[j].X = floor(XSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
+            kaKernells[j].Y = floor(YSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
+            newCheckSum += (kaKernells[j].X +kaKernells[j].Y);
+        }
+        if (oldCheckSum != newCheckSum){
+            return true;
+
+        }
+        else{
+        return false;}
     }
 }
