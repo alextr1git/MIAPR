@@ -140,7 +140,7 @@ private void doCalculations(){
             }
             gc.fillRect(points[i].X, points[i].Y, dotSize, dotSize);
         }
-        for (int j = 0; j < existedClassesCount; j++){
+        for (int j = 1; j <= existedClassesCount; j++){
             gc.setFill(Color.RED);
             gc.fillRect(kaKernells[j].X, kaKernells[j].Y, dotSize + 3, dotSize + 3);
         }
@@ -273,7 +273,6 @@ if(existedClassesCount == 50){
         newKernellsKA();
         tienewObjectsToClasses();
         while (reOrderKernells()) {
-            System.out.println("ITERATION");
             tienewObjectsToClasses();
         }
         KAdrawAllObjects();
@@ -338,15 +337,14 @@ if(existedClassesCount == 50){
                     YSumOfObjectsInClasses[10] += points[i].Y;
                     break;
                 default:
-                    System.out.println("DEF");
+
                     break;
 
 
             }
         }
-        System.out.println(existedClassesCount);
-        for (int j = 1; j <= existedClassesCount; j++){
 
+        for (int j = 1; j <= existedClassesCount; j++){
             kaKernells[j] = new Point(XSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j], YSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
            kaKernells[j].isKernell = true;
         }
@@ -421,9 +419,6 @@ if(existedClassesCount == 50){
         int newCheckSum = 0;
         for (int j = 1; j <= existedClassesCount; j++){
             oldCheckSum += (kaKernells[j].X +kaKernells[j].Y);
-            System.out.println(j);
-            System.out.println(amountsOfObjectsInClasses[j]);
-            System.out.println(XSumOfObjectsInClasses[j]);
             kaKernells[j].X = floor(XSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
             kaKernells[j].Y = floor(YSumOfObjectsInClasses[j]/amountsOfObjectsInClasses[j]);
             newCheckSum += (kaKernells[j].X +kaKernells[j].Y);
